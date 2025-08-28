@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos - Tipos Sanguíneos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .chart-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            height: 300px;
+        }
+        h2 {
+            color: #34495e;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Distribuição de Tipos Sanguíneos</h1>
+    
+    <div class="container">
+        <div class="chart-container">
+            <h2>Gráfico de Pizza</h2>
+            <canvas id="pizzaChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h2>Gráfico de Colunas</h2>
+            <canvas id="colunaChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h2>Gráfico de Linhas</h2>
+            <canvas id="linhaChart"></canvas>
+        </div>
+    </div>
+    
+    <div class="info">
+        <p>Total de amostras: 30 | A: 12 (40%) | B: 5 (16.7%) | AB: 3 (10%) | O: 10 (33.3%)</p>
+    </div>
 
+    <script>
+        // Dados fornecidos
+        const tipos = ['A', 'B', 'AB', 'O'];
+        const valores = [12, 5, 3, 10];
+        const total = 30;
+        const porcentagens = valores.map(valor => ((valor / total) * 100).toFixed(1) + '%');
+        
+        // Cores para os gráficos
+        const cores = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'];
+        
+        // Gráfico de Pizza
+        new Chart(document.getElementById('pizzaChart'), {
+            type: 'pie',
+            data: {
+                labels: tipos.map((tipo, i) => `${tipo}: ${porcentagens[i]}`),
+                datasets: [{
+                    data: valores,
+                    backgroundColor: cores,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.raw} (${((context.raw / total) * 100).toFixed(1)}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Gráfico de Colunas
+        new Chart(document.getElementById('colunaChart'), {
+            type: 'bar',
+            data: {
+                labels: tipos,
+                datasets: [{
+                    label: 'Quantidade',
+                    data: valores,
+                    backgroundColor: cores,
+                    borderColor: cores.map(cor => cor.replace('0.8', '1')),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Quantidade'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tipo Sanguíneo'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Gráfico de Linhas
+        new Chart(document.getElementById('linhaChart'), {
+            type: 'line',
+            data: {
+                labels: tipos,
+                datasets: [{
+                    label: 'Quantidade por Tipo',
+                    data: valores,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: cores,
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Quantidade'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tipo Sanguíneo'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
