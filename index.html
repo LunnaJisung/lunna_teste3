@@ -3,631 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnologia & Inovação - Páginas Detalhadas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* ESTILOS GERAIS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0a0e17 0%, #1a2639 50%, #0d1525 100%);
-            color: #e0e0e0;
-            font-family: 'Exo 2', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-attachment: fixed;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* EFEITO DE BORDA CYBERPUNK */
-        .cyber-border {
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2),
-                        inset 0 0 20px rgba(0, 212, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px auto;
-            background: rgba(13, 21, 37, 0.8);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cyber-border::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-            animation: scanline 3s linear infinite;
-        }
-
-        @keyframes scanline {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(1000%); }
-        }
-
-        /* CABEÇALHO */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        .main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            background: linear-gradient(45deg, #00d4ff, #3a86ff, #00d4ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-            letter-spacing: 2px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
-            to { text-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 40px rgba(58, 134, 255, 0.6); }
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #00d4ff;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        /* NAVEGAÇÃO POR ABAS */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .nav-tab {
-            background: rgba(13, 21, 37, 0.7);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            color: #00d4ff;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Exo 2', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .nav-tab:hover::before {
-            left: 100%;
-        }
-
-        .nav-tab:hover, .nav-tab.active {
-            background: rgba(0, 212, 255, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
-        }
-
-        /* SEÇÕES DE CONTEÚDO */
-        .section {
-            display: none;
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            color: #00d4ff;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-            position: relative;
-            display: inline-block;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #00d4ff, transparent);
-        }
-
-        /* CONTEÚDO DAS PÁGINAS */
-        .page-content {
-            padding: 20px;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 900px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .text-content {
-            background: rgba(20, 30, 48, 0.4);
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-
-        .text-content h3 {
-            color: #00d4ff;
-            margin-bottom: 15px;
-            font-size: 1.6rem;
-        }
-
-        .text-content p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            text-align: justify;
-            color: #c2c2c2;
-        }
-
-        .code-explanation {
-            background: rgba(20, 30, 48, 0.4);
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-
-        .code-explanation h3 {
-            color: #00d4ff;
-            margin-bottom: 15px;
-            font-size: 1.6rem;
-        }
-
-        .code-explanation p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            text-align: justify;
-            color: #c2c2c2;
-        }
-
-        .code-block {
-            background: #1a1f2e;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-            overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            border-left: 4px solid #00d4ff;
-        }
-
-        .code-keyword {
-            color: #ff79c6;
-        }
-
-        .code-comment {
-            color: #6272a4;
-        }
-
-        .code-string {
-            color: #f1fa8c;
-        }
-
-        .code-function {
-            color: #50fa7b;
-        }
-
-        /* BOTÕES DE NAVEGAÇÃO */
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .page-button {
-            background: linear-gradient(45deg, #00d4ff, #3a86ff);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Exo 2', sans-serif;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
-        }
-
-        .page-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
-        }
-
-        /* ELEMENTOS DECORATIVOS */
-        .tech-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .tech-element {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.1;
-            animation: float 15s infinite linear;
-            z-index: 0;
-            color: #00d4ff;
-        }
-
-        .tech-element:nth-child(1) { top: 10%; left: 5%; animation-duration: 20s; }
-        .tech-element:nth-child(2) { top: 30%; right: 10%; animation-duration: 25s; }
-        .tech-element:nth-child(3) { bottom: 20%; left: 15%; animation-duration: 18s; }
-        .tech-element:nth-child(4) { bottom: 40%; right: 5%; animation-duration: 22s; }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-            100% { transform: translateY(0) rotate(360deg); }
-        }
-
-        /* EFEITOS DE PARTÍCULAS */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background-color: rgba(0, 212, 255, 0.7);
-            border-radius: 50%;
-            animation: particleFloat 20s infinite linear;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100vw);
-                opacity: 0;
-            }
-        }
-
-        /* RESPONSIVIDADE */
-        @media (max-width: 900px) {
-            .main-title {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .nav-tab {
-                padding: 10px 15px;
-                font-size: 1rem;
-            }
-            
-            .nav-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+    <title>SETEC - Desenvolvimento de Sistemas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Efeito de partículas de fundo -->
-    <div class="particles" id="particles"></div>
-    
-    <div class="container">
-        <header>
-            <h1 class="main-title">TECNOLOGIA & INOVAÇÃO</h1>
-            <p class="subtitle">Páginas Detalhadas - Explorando os Temas e Códigos</p>
-        </header>
-        
-        <!-- Navegação por abas -->
-        <div class="nav-tabs">
-            <button class="nav-tab active" data-target="dev-systems">Desenvolvimento de Sistemas</button>
-            <button class="nav-tab" data-target="ia">Inteligência Artificial</button>
-            <button class="nav-tab" data-target="setec">SETEC</button>
-        </div>
-        
-        <div class="cyber-border">
-            <!-- Página 1 - Desenvolvimento de Sistemas -->
-            <section id="dev-systems" class="section active">
-                <h2 class="section-title">Desenvolvimento de Sistemas</h2>
-                <div class="page-content">
-                    <div class="content-grid">
-                        <div class="text-content">
-                            <h3>O que é Desenvolvimento de Sistemas?</h3>
-                            <p>O desenvolvimento de sistemas é o processo de criação, implementação e manutenção de software para atender às necessidades específicas de usuários ou organizações. Envolve diversas etapas, desde a análise de requisitos até a implantação e manutenção do sistema.</p>
-                            <p>Os desenvolvedores de sistemas utilizam diversas linguagens de programação, frameworks e metodologias para criar soluções eficientes e escaláveis. As áreas de atuação incluem desenvolvimento web, mobile, desktop, jogos e sistemas embarcados.</p>
-                            <p>Com a transformação digital em curso, a demanda por desenvolvedores de sistemas continua crescendo, tornando esta uma das profissões mais promissoras do século XXI.</p>
-                        </div>
-                        <div class="code-explanation">
-                            <h3>Exemplo de Código: Função JavaScript</h3>
-                            <p>Este código demonstra uma função simples em JavaScript que valida um formulário de contato:</p>
-                            <div class="code-block">
-                                <span class="code-keyword">function</span> <span class="code-function">validarFormulario</span>() {<br>
-                                &nbsp;&nbsp;<span class="code-keyword">const</span> nome = document.getElementById(<span class="code-string">'nome'</span>).value;<br>
-                                &nbsp;&nbsp;<span class="code-keyword">const</span> email = document.getElementById(<span class="code-string">'email'</span>).value;<br>
-                                &nbsp;&nbsp;<span class="code-keyword">const</span> mensagem = document.getElementById(<span class="code-string">'mensagem'</span>).value;<br><br>
-                                &nbsp;&nbsp;<span class="code-comment">// Verificar se os campos estão preenchidos</span><br>
-                                &nbsp;&nbsp;<span class="code-keyword">if</span>(nome === <span class="code-string">''</span> || email === <span class="code-string">''</span> || mensagem === <span class="code-string">''</span>) {<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="code-string">'Por favor, preencha todos os campos.'</span>);<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> false;<br>
-                                &nbsp;&nbsp;}<br><br>
-                                &nbsp;&nbsp;<span class="code-comment">// Validar formato do email</span><br>
-                                &nbsp;&nbsp;<span class="code-keyword">const</span> regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;<br>
-                                &nbsp;&nbsp;<span class="code-keyword">if</span>(!regexEmail.test(email)) {<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="code-string">'Por favor, insira um email válido.'</span>);<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> false;<br>
-                                &nbsp;&nbsp;}<br><br>
-                                &nbsp;&nbsp;<span class="code-keyword">return</span> true;<br>
-                                }
-                            </div>
-                            <p>Este código verifica se todos os campos do formulário foram preenchidos e valida o formato do email usando uma expressão regular.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Botões de navegação -->
-                    <div class="nav-buttons">
-                        <a href="#" class="page-button">
-                            <i class="fas fa-arrow-left"></i> Voltar para o Início
-                        </a>
-                        <a href="dev-systems-detalhes.html" class="page-button">
-                            Ver Página Detalhada <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+    <header>
+        <h1>SETEC - Curso Técnico em Desenvolvimento de Sistemas</h1>
+    </header>
+
+    <main>
+        <!-- Primeira Sessão: Sobre o curso -->
+        <section id="sobre-curso">
+            <h2>Sobre o Curso</h2>
+            <div class="conteudo">
+                <div class="texto">
+                    <p>O curso técnico em Desenvolvimento de Sistemas da SETEC prepara os alunos para atuarem no mercado de tecnologia, desenvolvendo habilidades em programação, banco de dados, análise de sistemas e muito mais.</p>
+                    <p>Com uma abordagem prática e atualizada, os estudantes aprendem as principais linguagens e tecnologias do mercado, tornando-se profissionais capacitados para enfrentar os desafios da área.</p>
                 </div>
-            </section>
-
-            <!-- Página 2 - Inteligência Artificial -->
-            <section id="ia" class="section">
-                <h2 class="section-title">Inteligência Artificial</h2>
-                <div class="page-content">
-                    <div class="content-grid">
-                        <div class="text-content">
-                            <h3>O que é Inteligência Artificial?</h3>
-                            <p>A Inteligência Artificial (IA) é um campo da ciência da computação dedicado à criação de sistemas capazes de realizar tarefas que normalmente requerem inteligência humana. Isso inclui aprendizado, raciocínio, percepção, reconhecimento de voz e tomada de decisões.</p>
-                            <p>As principais áreas da IA incluem machine learning (aprendizado de máquina), redes neurais, processamento de linguagem natural, visão computacional e sistemas especialistas. A IA está transformando setores como saúde, finanças, transporte e entretenimento.</p>
-                            <p>Com avanços recentes em deep learning e big data, a IA tornou-se uma das tecnologias mais disruptivas e promissoras da atualidade, com potencial para resolver alguns dos maiores desafios da humanidade.</p>
-                        </div>
-                        <div class="code-explanation">
-                            <h3>Exemplo de Código: Rede Neural Simples em Python</h3>
-                            <p>Este código demonstra uma rede neural simples usando a biblioteca TensorFlow em Python:</p>
-                            <div class="code-block">
-                                <span class="code-keyword">import</span> tensorflow <span class="code-keyword">as</span> tf<br>
-                                <span class="code-keyword">from</span> tensorflow <span class="code-keyword">import</span> keras<br>
-                                <span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np<br><br>
-                                <span class="code-comment"># Carregar e preparar os dados</span><br>
-                                (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()<br>
-                                x_train = x_train.reshape(-1, 28*28).astype(<span class="code-string">'float32'</span>) / 255.0<br>
-                                x_test = x_test.reshape(-1, 28*28).astype(<span class="code-string">'float32'</span>) / 255.0<br><br>
-                                <span class="code-comment"># Criar o modelo</span><br>
-                                model = keras.Sequential([<br>
-                                &nbsp;&nbsp;keras.layers.Dense(128, activation=<span class="code-string">'relu'</span>),<br>
-                                &nbsp;&nbsp;keras.layers.Dense(64, activation=<span class="code-string">'relu'</span>),<br>
-                                &nbsp;&nbsp;keras.layers.Dense(10, activation=<span class="code-string">'softmax'</span>)<br>
-                                ])<br><br>
-                                <span class="code-comment"># Compilar o modelo</span><br>
-                                model.compile(optimizer=<span class="code-string">'adam'</span>,<br>
-                                &nbsp;&nbsp;loss=<span class="code-string">'sparse_categorical_crossentropy'</span>,<br>
-                                &nbsp;&nbsp;metrics=[<span class="code-string">'accuracy'</span>])<br><br>
-                                <span class="code-comment"># Treinar o modelo</span><br>
-                                model.fit(x_train, y_train, epochs=5, validation_split=0.2)<br><br>
-                                <span class="code-comment"># Avaliar o modelo</span><br>
-                                test_loss, test_acc = model.evaluate(x_test, y_test)<br>
-                                print(<span class="code-string">'Acurácia do teste:'</span>, test_acc)<br>
-                            </div>
-                            <p>Este código cria uma rede neural para classificar dígitos manuscritos do dataset MNIST, demonstrando os conceitos básicos de machine learning.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Botões de navegação -->
-                    <div class="nav-buttons">
-                        <a href="#" class="page-button">
-                            <i class="fas fa-arrow-left"></i> Voltar para o Início
-                        </a>
-                        <a href="ia-detalhes.html" class="page-button">
-                            Ver Página Detalhada <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+                <div class="imagem">
+                    <img src="https://placehold.co/600x400/0066cc/white?text=Desenvolvimento+de+Sistemas" alt="Curso de Desenvolvimento de Sistemas">
                 </div>
-            </section>
+            </div>
+            <div class="navegacao">
+                <a href="p1.html" class="botao">Ver Conteúdos Detalhados</a>
+                <a href="p2.html" class="botao">Ver Vídeos do Curso</a>
+                <a href="p3.html" class="botao">Visão Futurística</a>
+            </div>
+        </section>
 
-            <!-- Página 3 - SETEC -->
-            <section id="setec" class="section">
-                <h2 class="section-title">SETEC - Feira de Tecnologia</h2>
-                <div class="page-content">
-                    <div class="content-grid">
-                        <div class="text-content">
-                            <h3>O que é a SETEC?</h3>
-                            <p>A SETEC (Semana de Tecnologia) é um evento anual que reúne profissionais, estudantes e entusiastas da área de tecnologia para discutir as últimas tendências e inovações do setor. Durante a feira, são realizadas palestras, workshops, competições de programação e exposições de projetos tecnológicos desenvolvidos por alunos.</p>
-                            <p>O evento proporciona uma oportunidade única para networking, aprendizado e compartilhamento de conhecimentos entre participantes de diversas instituições e empresas. A SETEC tem como objetivo principal inspirar e capacitar a próxima geração de profissionais de tecnologia.</p>
-                            <p>Além disso, a feira conta com a participação de empresas renomadas do setor, que apresentam novidades tecnológicas, processos de recrutamento e oportunidades de estágio e emprego.</p>
-                        </div>
-                        <div class="code-explanation">
-                            <h3>Exemplo de Código: Sistema de Inscrição para Evento</h3>
-                            <p>Este código demonstra um sistema simples de inscrição para eventos usando HTML, CSS e JavaScript:</p>
-                            <div class="code-block">
-                                <span class="code-comment">&lt;!-- Estrutura HTML --&gt;</span><br>
-                                &lt;div id=<span class="code-string">"formulario-inscricao"</span>&gt;<br>
-                                &nbsp;&nbsp;&lt;h2&gt;Inscrição para a SETEC&lt;/h2&gt;<br>
-                                &nbsp;&nbsp;&lt;form id=<span class="code-string">"form-evento"</span>&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type=<span class="code-string">"text"</span> id=<span class="code-string">"nome"</span> placeholder=<span class="code-string">"Seu nome completo"</span> required&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type=<span class="code-string">"email"</span> id=<span class="code-string">"email"</span> placeholder=<span class="code-string">"Seu email"</span> required&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;select id=<span class="code-string">"tipo-ingresso"</span> required&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=<span class="code-string">""</span>&gt;Selecione o tipo de ingresso&lt;/option&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=<span class="code-string">"estudante"</span>&gt;Estudante&lt;/option&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=<span class="code-string">"profissional"</span>&gt;Profissional&lt;/option&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=<span class="code-string">"palestrante"</span>&gt;Palestrante&lt;/option&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;button type=<span class="code-string">"submit"</span>&gt;Inscrever-se&lt;/button&gt;<br>
-                                &nbsp;&nbsp;&lt;/form&gt;<br>
-                                &lt;/div&gt;<br><br>
-                                <span class="code-comment">// JavaScript para processar a inscrição</span><br>
-                                document.getElementById(<span class="code-string">'form-evento'</span>).addEventListener(<span class="code-string">'submit'</span>, <span class="code-keyword">function</span>(e) {<br>
-                                &nbsp;&nbsp;e.preventDefault();<br>
-                                &nbsp;&nbsp;<span class="code-keyword">const</span> nome = document.getElementById(<span class="code-string">'nome'</span>).value;<br>
-                                &nbsp;&nbsp;<span class="code-keyword">const</span> email = document.getElementById(<span class="code-string">'email'</span>).value;<br>
-                                &nbsp;&nbsp;<span class="code-keyword">const</span> tipo = document.getElementById(<span class="code-string">'tipo-ingresso'</span>).value;<br><br>
-                                &nbsp;&nbsp;<span class="code-comment">// Simular envio para o servidor</span><br>
-                                &nbsp;&nbsp;console.log(<span class="code-string">`Inscrição recebida: <span class="code-keyword">${</span>nome<span class="code-keyword">}</span>, <span class="code-keyword">${</span>email<span class="code-keyword">}</span>, <span class="code-keyword">${</span>tipo<span class="code-keyword">}</span>`</span>);<br>
-                                &nbsp;&nbsp;alert(<span class="code-string">'Inscrição realizada com sucesso! Verifique seu email para confirmação.'</span>);<br>
-                                &nbsp;&nbsp;document.getElementById(<span class="code-string">'form-evento'</span>).reset();<br>
-                                });
-                            </div>
-                            <p>Este código cria um formulário de inscrição para eventos e processa os dados do usuário, demonstrando conceitos de desenvolvimento web front-end.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Botões de navegação -->
-                    <div class="nav-buttons">
-                        <a href="#" class="page-button">
-                            <i class="fas fa-arrow-left"></i> Voltar para o Início
-                        </a>
-                        <a href="setec-detalhes.html" class="page-button">
-                            Ver Página Detalhada <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+        <!-- Segunda Sessão: Vídeos -->
+        <section id="videos">
+            <h2>Vídeos do Curso</h2>
+            <div class="video-links">
+                <a href="https://www.youtube.com/watch?v=abcdefg" class="video-thumb">
+                    <img src="https://placehold.co/300x200/cc0000/white?text=Video+1" alt="Introdução à Programação">
+                    <h3>Introdução à Programação</h3>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hijklmn" class="video-thumb">
+                    <img src="https://placehold.co/300x200/00cc00/white?text=Video+2" alt="Banco de Dados">
+                    <h3>Banco de Dados</h3>
+                </a>
+                <a href="https://www.youtube.com/watch?v=opqrstu" class="video-thumb">
+                    <img src="https://placehold.co/300x200/cc00cc/white?text=Video+3" alt="Desenvolvimento Web">
+                    <h3>Desenvolvimento Web</h3>
+                </a>
+            </div>
+            <div class="navegacao">
+                <a href="p1.html" class="botao">Sobre o Curso</a>
+                <a href="p3.html" class="botao">Visão Futurística</a>
+            </div>
+        </section>
+
+        <!-- Terceira Sessão: Visão Futurística -->
+        <section id="futuro">
+            <h2>Visão Futurística da SETEC</h2>
+            <div class="conteudo">
+                <div class="texto">
+                    <p>A SETEC está se preparando para o futuro com investimentos em laboratórios de realidade virtual, inteligência artificial e internet das coisas. Nosso objetivo é formar profissionais prontos para as tecnologias emergentes.</p>
+                    <p>Até 2030, planejamos implementar:</p>
+                    <ul>
+                        <li>Laboratórios de IA e Machine Learning</li>
+                        <li>Parcerias com empresas de tecnologia global</li>
+                        <li>Programas de intercâmbio tecnológico</li>
+                        <li>Incubadora de startups para alunos</li>
+                    </ul>
                 </div>
-            </section>
-        </div>
-    </div>
+                <div class="imagem">
+                    <img src="https://placehold.co/600x400/6600cc/white?text=Futuro+da+Tecnologia" alt="Visão Futurística da SETEC">
+                </div>
+            </div>
+            <div class="navegacao">
+                <a href="p1.html" class="botao">Sobre o Curso</a>
+                <a href="p2.html" class="botao">Ver Vídeos</a>
+            </div>
+        </section>
+    </main>
 
-    <!-- 
-        COMENTÁRIOS PARA DESENVOLVEDORES:
-        
-        Este código cria uma página com três seções principais:
-        1. Desenvolvimento de Sistemas
-        2. Inteligência Artificial
-        3. SETEC (Feira de Tecnologia)
-        
-        ESTRUTURA DO CÓDIGO:
-        - O sistema de navegação por abas permite alternar entre as seções
-        - Cada seção possui um botão para acessar uma página detalhada
-        - O design utiliza tema cyberpunk com efeitos visuais modernos
-        - O código está organizado em seções bem definidas para facilitar a manutenção
-        
-        FUNCIONALIDADES PRINCIPAIS:
-        1. Navegação por abas com JavaScript
-        2. Efeitos visuais com CSS (animações, gradientes, sombras)
-        3. Layout responsivo que se adapta a diferentes tamanhos de tela
-        4. Exemplos de código com sintaxe colorida para melhor legibilidade
-        
-        PERSONALIZAÇÃO:
-        - Para alterar as cores do tema, modifique as variáveis de cor no CSS
-        - Para adicionar novas seções, copie a estrutura de uma seção existente e atualize o JavaScript
-        - Para modificar os efeitos visuais, ajuste as animações e transformações no CSS
-    -->
-
-    <script>
-        // COMENTÁRIO: Esta função controla a navegação por abas
-        document.addEventListener('DOMContentLoaded', function() {
-            const navButtons = document.querySelectorAll('.nav-tab');
-            const sections = document.querySelectorAll('.section');
-            
-            // COMENTÁRIO: Adiciona event listeners para os botões de navegação
-            navButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const target = this.getAttribute('data-target');
-                    
-                    // COMENTÁRIO: Atualiza a classe active nos botões de navegação
-                    navButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // COMENTÁRIO: Mostra a seção alvo e esconde as outras
-                    sections.forEach(section => {
-                        if (section.id === target) {
-                            section.classList.add('active');
-                        } else {
-                            section.classList.remove('active');
-                        }
-                    });
-                });
-            });
-            
-            // COMENTÁRIO: Cria partículas de fundo para efeito visual
-            const particlesContainer = document.getElementById('particles');
-            const numberOfParticles = 50;
-            
-            for (let i = 0; i < numberOfParticles; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // COMENTÁRIO: Define posição e animação aleatórias para cada partícula
-                const posX = Math.random() * 100;
-                const delay = Math.random() * 15;
-                const duration = Math.random() * 10 + 15;
-                
-                particle.style.left = `${posX}vw`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        });
-    </script>
+    <footer>
+        <p>SETEC - Desenvolvimento de Sistemas © 2023</p>
+    </footer>
 </body>
 </html>
