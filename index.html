@@ -8,79 +8,110 @@
 </head>
 <body>
     <header>
-        <h1>SETEC - Curso Técnico em Desenvolvimento de Sistemas</h1>
+        <div class="container">
+            <h1>SETEC - Curso Técnico em Desenvolvimento de Sistemas</h1>
+            <p>Formando profissionais para o futuro da tecnologia</p>
+        </div>
     </header>
 
-    <main>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#sobre-curso">Sobre o Curso</a></li>
+                <li><a href="#ia">Temas de IA</a></li>
+                <li><a href="#setec">Sobre a SETEC</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
         <!-- Primeira Sessão: Sobre o curso -->
-        <section id="sobre-curso">
+        <section id="sobre-curso" class="sessao">
             <h2>Sobre o Curso</h2>
             <div class="conteudo">
                 <div class="texto">
                     <p>O curso técnico em Desenvolvimento de Sistemas da SETEC prepara os alunos para atuarem no mercado de tecnologia, desenvolvendo habilidades em programação, banco de dados, análise de sistemas e muito mais.</p>
                     <p>Com uma abordagem prática e atualizada, os estudantes aprendem as principais linguagens e tecnologias do mercado, tornando-se profissionais capacitados para enfrentar os desafios da área.</p>
+                    <h3>Módulos Principais:</h3>
+                    <ul>
+                        <li>Lógica de Programação</li>
+                        <li>Desenvolvimento Web Front-end e Back-end</li>
+                        <li>Banco de Dados e SQL</li>
+                        <li>Engenharia de Software</li>
+                        <li>Dispositivos Móveis</li>
+                        <li>Projeto Integrador</li>
+                    </ul>
                 </div>
                 <div class="imagem">
-                    <img src="https://placehold.co/600x400/0066cc/white?text=Desenvolvimento+de+Sistemas" alt="Curso de Desenvolvimento de Sistemas">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Desenvolvimento de Sistemas">
                 </div>
             </div>
             <div class="navegacao">
                 <a href="p1.html" class="botao">Ver Conteúdos Detalhados</a>
-                <a href="p2.html" class="botao">Ver Vídeos do Curso</a>
-                <a href="p3.html" class="botao">Visão Futurística</a>
+                <a href="p2.html" class="botao">Ver Vídeos sobre IA</a>
+                <a href="p3.html" class="botao">Conheça a SETEC</a>
             </div>
         </section>
 
-        <!-- Segunda Sessão: Vídeos -->
-        <section id="videos">
-            <h2>Vídeos do Curso</h2>
-            <div class="video-links">
-                <a href="https://www.youtube.com/watch?v=abcdefg" class="video-thumb">
-                    <img src="https://placehold.co/300x200/cc0000/white?text=Video+1" alt="Introdução à Programação">
-                    <h3>Introdução à Programação</h3>
-                </a>
-                <a href="https://www.youtube.com/watch?v=hijklmn" class="video-thumb">
-                    <img src="https://placehold.co/300x200/00cc00/white?text=Video+2" alt="Banco de Dados">
-                    <h3>Banco de Dados</h3>
-                </a>
-                <a href="https://www.youtube.com/watch?v=opqrstu" class="video-thumb">
-                    <img src="https://placehold.co/300x200/cc00cc/white?text=Video+3" alt="Desenvolvimento Web">
-                    <h3>Desenvolvimento Web</h3>
-                </a>
+        <!-- Segunda Sessão: Temas de IA -->
+        <section id="ia" class="sessao">
+            <h2>Temas de Inteligência Artificial</h2>
+            <div class="temas-ia">
+                <div class="tema">
+                    <h3>Machine Learning</h3>
+                    <p>O aprendizado de máquina é um método de análise de dados que automatiza a construção de modelos analíticos. É um ramo da inteligência artificial baseado na ideia de que sistemas podem aprender com dados, identificar padrões e tomar decisões com o mínimo de intervenção humana.</p>
+                </div>
+                <div class="tema">
+                    <h3>Redes Neurais</h3>
+                    <p>As redes neurais artificiais são sistemas de computação com nós interconectados que funcionam como os neurônios do cérebro humano. Usando algoritmos, elas podem reconhecer padrões escondidos e correlações em dados brutos, agrupá-los e classificá-los.</p>
+                </div>
+                <div class="tema">
+                    <h3>Processamento de Linguagem Natural</h3>
+                    <p>O PLN é um campo da IA que se concentra na interação entre computadores e linguagem humana. Ele permite que os computadores entendam, interpretem e manipulem a linguagem humana, sendo a base para assistentes virtuais, tradutores automáticos e análise de sentimentos.</p>
+                </div>
+                <div class="tema">
+                    <h3>Visão Computacional</h3>
+                    <p>A visão computacional é um campo científico interdisciplinar que trata de como os computadores podem ganhar alto nível de compreensão a partir de imagens ou vídeos digitais. Do ponto de vista da engenharia, busca automatizar tarezas que o sistema visual humano pode realizar.</p>
+                </div>
             </div>
             <div class="navegacao">
                 <a href="p1.html" class="botao">Sobre o Curso</a>
-                <a href="p3.html" class="botao">Visão Futurística</a>
+                <a href="p3.html" class="botao">Conheça a SETEC</a>
             </div>
         </section>
 
-        <!-- Terceira Sessão: Visão Futurística -->
-        <section id="futuro">
-            <h2>Visão Futurística da SETEC</h2>
+        <!-- Terceira Sessão: Sobre a SETEC -->
+        <section id="setec" class="sessao">
+            <h2>Sobre a SETEC</h2>
             <div class="conteudo">
                 <div class="texto">
-                    <p>A SETEC está se preparando para o futuro com investimentos em laboratórios de realidade virtual, inteligência artificial e internet das coisas. Nosso objetivo é formar profissionais prontos para as tecnologias emergentes.</p>
-                    <p>Até 2030, planejamos implementar:</p>
+                    <p>A SETEC (Secretaria de Educação Profissional e Tecnológica) é responsável por articular a oferta de educação profissional e tecnológica no Brasil, promovendo a formação de profissionais capacitados para atender às demandas do mercado de trabalho.</p>
+                    <p>Nossa missão é fomentar a educação profissional e tecnológica, promovendo a inclusão social e contribuindo para o desenvolvimento sustentável do país, por meio da oferta de cursos que dialoguem com as necessidades do setor produtivo e da sociedade.</p>
+                    <h3>Nossos Valores:</h3>
                     <ul>
-                        <li>Laboratórios de IA e Machine Learning</li>
-                        <li>Parcerias com empresas de tecnologia global</li>
-                        <li>Programas de intercâmbio tecnológico</li>
-                        <li>Incubadora de startups para alunos</li>
+                        <li>Excelência no ensino</li>
+                        <li>Inovação tecnológica</li>
+                        <li>Compromisso social</li>
+                        <li>Desenvolvimento sustentável</li>
+                        <li>Ética e transparência</li>
                     </ul>
                 </div>
                 <div class="imagem">
-                    <img src="https://placehold.co/600x400/6600cc/white?text=Futuro+da+Tecnologia" alt="Visão Futurística da SETEC">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="SETEC">
                 </div>
             </div>
             <div class="navegacao">
                 <a href="p1.html" class="botao">Sobre o Curso</a>
-                <a href="p2.html" class="botao">Ver Vídeos</a>
+                <a href="p2.html" class="botao">Temas de IA</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>SETEC - Desenvolvimento de Sistemas © 2023</p>
+        <div class="container">
+            <p>SETEC - Desenvolvimento de Sistemas © 2023</p>
+            <p>Email: contato@setec.com.br | Telefone: (11) 3456-7890</p>
+        </div>
     </footer>
 </body>
 </html>
