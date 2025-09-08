@@ -1,179 +1,533 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gráficos - Tipos Sanguíneos</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Tecnologia & Inovação - Páginas Detalhadas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
-            margin: 0 auto;
+            background: linear-gradient(135deg, #0a0e17 0%, #1a2639 50%, #0d1525 100%);
+            color: #e0e0e0;
+            font-family: 'Exo 2', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-attachment: fixed;
             padding: 20px;
-            background-color: #f5f5f5;
         }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .chart-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-            height: 300px;
+
+        .cyber-border {
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2),
+                        inset 0 0 20px rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            background: rgba(13, 21, 37, 0.8);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
-        h2 {
-            color: #34495e;
+
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+
+        header {
             text-align: center;
-            margin-top: 0;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #00d4ff, #3a86ff, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
         }
-        .info {
-            text-align: center;
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 40px rgba(58, 134, 255, 0.6); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-tab {
+            background: rgba(13, 21, 37, 0.7);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Exo 2', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .nav-tab:hover::before {
+            left: 100%;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: rgba(0, 212, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            position: relative;
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, transparent);
+        }
+
+        /* Conteúdo das páginas */
+        .page-content {
+            padding: 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             margin-top: 20px;
-            color: #7f8c8d;
+        }
+
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .text-content {
+            background: rgba(20, 30, 48, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .text-content h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: justify;
+            color: #c2c2c2;
+        }
+
+        .code-explanation {
+            background: rgba(20, 30, 48, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .code-explanation h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .code-explanation p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: justify;
+            color: #c2c2c2;
+        }
+
+        .code-block {
+            background: #1a1f2e;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .code-keyword {
+            color: #ff79c6;
+        }
+
+        .code-comment {
+            color: #6272a4;
+        }
+
+        .code-string {
+            color: #f1fa8c;
+        }
+
+        .code-function {
+            color: #50fa7b;
+        }
+
+        .tech-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .tech-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+            z-index: 0;
+            color: #00d4ff;
+        }
+
+        .tech-element:nth-child(1) { top: 10%; left: 5%; animation-duration: 20s; }
+        .tech-element:nth-child(2) { top: 30%; right: 10%; animation-duration: 25s; }
+        .tech-element:nth-child(3) { bottom: 20%; left: 15%; animation-duration: 18s; }
+        .tech-element:nth-child(4) { bottom: 40%; right: 5%; animation-duration: 22s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        /* Efeitos de partículas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: rgba(0, 212, 255, 0.7);
+            border-radius: 50%;
+            animation: particleFloat 20s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-tab {
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Distribuição de Tipos Sanguíneos</h1>
+    <div class="particles" id="particles"></div>
     
     <div class="container">
-        <div class="chart-container">
-            <h2>Gráfico de Pizza</h2>
-            <canvas id="pizzaChart"></canvas>
+        <header>
+            <h1 class="main-title">TECNOLOGIA & INOVAÇÃO</h1>
+            <p class="subtitle">Páginas Detalhadas - Explorando os Temas e Códigos</p>
+        </header>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-target="dev-systems">Desenvolvimento de Sistemas</button>
+            <button class="nav-tab" data-target="ia">Inteligência Artificial</button>
+            <button class="nav-tab" data-target="setec">SETEC</button>
         </div>
         
-        <div class="chart-container">
-            <h2>Gráfico de Colunas</h2>
-            <canvas id="colunaChart"></canvas>
+        <div class="cyber-border">
+            <!-- Página 1 - Desenvolvimento de Sistemas -->
+            <section id="dev-systems" class="section active">
+                <h2 class="section-title">Desenvolvimento de Sistemas</h2>
+                <div class="page-content">
+                    <div class="content-grid">
+                        <div class="text-content">
+                            <h3>O que é Desenvolvimento de Sistemas?</h3>
+                            <p>O desenvolvimento de sistemas é o processo de criação, implementação e manutenção de software para atender às necessidades específicas de usuários ou organizações. Envolve diversas etapas, desde a análise de requisitos até a implantação e manutenção do sistema.</p>
+                            <p>Os desenvolvedores de sistemas utilizam diversas linguagens de programação, frameworks e metodologias para criar soluções eficientes e escaláveis. As áreas de atuação incluem desenvolvimento web, mobile, desktop, jogos e sistemas embarcados.</p>
+                            <p>Com a transformação digital em curso, a demanda por desenvolvedores de sistemas continua crescendo, tornando esta uma das profissões mais promissoras do século XXI.</p>
+                        </div>
+                        <div class="code-explanation">
+                            <h3>Exemplo de Código: Função JavaScript</h3>
+                            <p>Este código demonstra uma função simples em JavaScript que valida um formulário de contato:</p>
+                            <div class="code-block">
+                                <span class="code-keyword">function</span> <span class="code-function">validarFormulario</span>() {<br>
+                                &nbsp;&nbsp;<span class="code-keyword">const</span> nome = document.getElementById(<span class="code-string">'nome'</span>).value;<br>
+                                &nbsp;&nbsp;<span class="code-keyword">const</span> email = document.getElementById(<span class="code-string">'email'</span>).value;<br>
+                                &nbsp;&nbsp;<span class="code-keyword">const</span> mensagem = document.getElementById(<span class="code-string">'mensagem'</span>).value;<br><br>
+                                &nbsp;&nbsp;<span class="code-comment">// Verificar se os campos estão preenchidos</span><br>
+                                &nbsp;&nbsp;<span class="code-keyword">if</span>(nome === <span class="code-string">''</span> || email === <span class="code-string">''</span> || mensagem === <span class="code-string">''</span>) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="code-string">'Por favor, preencha todos os campos.'</span>);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> false;<br>
+                                &nbsp;&nbsp;}<br><br>
+                                &nbsp;&nbsp;<span class="code-comment">// Validar formato do email</span><br>
+                                &nbsp;&nbsp;<span class="code-keyword">const</span> regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;<br>
+                                &nbsp;&nbsp;<span class="code-keyword">if</span>(!regexEmail.test(email)) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="code-string">'Por favor, insira um email válido.'</span>);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> false;<br>
+                                &nbsp;&nbsp;}<br><br>
+                                &nbsp;&nbsp;<span class="code-keyword">return</span> true;<br>
+                                }
+                            </div>
+                            <p>Este código verifica se todos os campos do formulário foram preenchidos e valida o formato do email usando uma expressão regular.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Página 2 - Inteligência Artificial -->
+            <section id="ia" class="section">
+                <h2 class="section-title">Inteligência Artificial</h2>
+                <div class="page-content">
+                    <div class="content-grid">
+                        <div class="text-content">
+                            <h3>O que é Inteligência Artificial?</h3>
+                            <p>A Inteligência Artificial (IA) é um campo da ciência da computação dedicado à criação de sistemas capazes de realizar tarefas que normalmente requerem inteligência humana. Isso inclui aprendizado, raciocínio, percepção, reconhecimento de voz e tomada de decisões.</p>
+                            <p>As principais áreas da IA incluem machine learning (aprendizado de máquina), redes neurais, processamento de linguagem natural, visão computacional e sistemas especialistas. A IA está transformando setores como saúde, finanças, transporte e entretenimento.</p>
+                            <p>Com avanços recentes em deep learning e big data, a IA tornou-se uma das tecnologias mais disruptivas e promissoras da atualidade, com potencial para resolver alguns dos maiores desafios da humanidade.</p>
+                        </div>
+                        <div class="code-explanation">
+                            <h3>Exemplo de Código: Rede Neural Simples em Python</h3>
+                            <p>Este código demonstra uma rede neural simples usando a biblioteca TensorFlow em Python:</p>
+                            <div class="code-block">
+                                <span class="code-keyword">import</span> tensorflow <span class="code-keyword">as</span> tf<br>
+                                <span class="code-keyword">from</span> tensorflow <span class="code-keyword">import</span> keras<br>
+                                <span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np<br><br>
+                                <span class="code-comment"># Carregar e preparar os dados</span><br>
+                                (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()<br>
+                                x_train = x_train.reshape(-1, 28*28).astype(<span class="code-string">'float32'</span>) / 255.0<br>
+                                x_test = x_test.reshape(-1, 28*28).astype(<span class="code-string">'float32'</span>) / 255.0<br><br>
+                                <span class="code-comment"># Criar o modelo</span><br>
+                                model = keras.Sequential([<br>
+                                &nbsp;&nbsp;keras.layers.Dense(128, activation=<span class="code-string">'relu'</span>),<br>
+                                &nbsp;&nbsp;keras.layers.Dense(64, activation=<span class="code-string">'relu'</span>),<br>
+                                &nbsp;&nbsp;keras.layers.Dense(10, activation=<span class="code-string">'softmax'</span>)<br>
+                                ])<br><br>
+                                <span class="code-comment"># Compilar o modelo</span><br>
+                                model.compile(optimizer=<span class="code-string">'adam'</span>,<br>
+                                &nbsp;&nbsp;loss=<span class="code-string">'sparse_categorical_crossentropy'</span>,<br>
+                                &nbsp;&nbsp;metrics=[<span class="code-string">'accuracy'</span>])<br><br>
+                                <span class="code-comment"># Treinar o modelo</span><br>
+                                model.fit(x_train, y_train, epochs=5, validation_split=0.2)<br><br>
+                                <span class="code-comment"># Avaliar o modelo</span><br>
+                                test_loss, test_acc = model.evaluate(x_test, y_test)<br>
+                                print(<span class="code-string">'Acurácia do teste:'</span>, test_acc)<br>
+                            </div>
+                            <p>Este código cria uma rede neural para classificar dígitos manuscritos do dataset MNIST, demonstrando os conceitos básicos de machine learning.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Página 3 - SETEC -->
+            <section id="setec" class="section">
+                <h2 class="section-title">SETEC - Feira de Tecnologia</h2>
+                <div class="page-content">
+                    <div class="content-grid">
+                        <div class="text-content">
+                            <h3>O que é a SETEC?</h3>
+                            <p>A SETEC (Semana de Tecnologia) é um evento anual que reúne profissionais, estudantes e entusiastas da área de tecnologia para discutir as últimas tendências e inovações do setor. Durante a feira, são realizadas palestras, workshops, competições de programação e exposições de projetos tecnológicos desenvolvidos por alunos.</p>
+                            <p>O evento proporciona uma oportunidade única para networking, aprendizado e compartilhamento de conhecimentos entre participantes de diversas instituições e empresas. A SETEC tem como objetivo principal inspirar e capacitar a próxima geração de profissionais de tecnologia.</p>
+                            <p>Além disso, a feira conta com a participação de empresas renomadas do setor, que apresentam novidades tecnológicas, processos de recrutamento e oportunidades de estágio e emprego.</p>
+                        </div>
+                        <div class="code-explanation">
+                            <h3>Exemplo de Código: Sistema de Inscrição para Evento</h3>
+                            <p>Este código demonstra um sistema simples de inscrição para eventos usando HTML, CSS e JavaScript:</p>
+                            <div class="code-block">
+                                <span class="code-comment">&lt;!-- Estrutura HTML --&gt;</span><br>
+                                &lt;div id=<span class="code-string">"formulario-inscricao"</span>&gt;<br>
+                                &nbsp;&nbsp;&lt;h2&gt;Inscrição para a SETEC&lt;/h2&gt;<br>
+                                &nbsp;&nbsp;&lt;form id=<span class="code-string">"form-evento"</span>&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type=<span class="code-string">"text"</span> id=<span class="code-string">"nome"</span> placeholder=<span class="code-string">"Seu nome completo"</span> required&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type=<span class="code-string">"email"</span> id=<span class="code-string">"email"</span> placeholder=<span class="code-string">"Seu email"</span> required&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;select id=<span class="code-string">"tipo-ingresso"</span> required&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=<span class="code-string">""</span>&gt;Selecione o tipo de ingresso&lt;/option&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=<span class="code-string">"estudante"</span>&gt;Estudante&lt;/option&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=<span class="code-string">"profissional"</span>&gt;Profissional&lt;/option&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=<span class="code-string">"palestrante"</span>&gt;Palestrante&lt;/option&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;button type=<span class="code-string">"submit"</span>&gt;Inscrever-se&lt;/button&gt;<br>
+                                &nbsp;&nbsp;&lt;/form&gt;<br>
+                                &lt;/div&gt;<br><br>
+                                <span class="code-comment">// JavaScript para processar a inscrição</span><br>
+                                document.getElementById(<span class="code-string">'form-evento'</span>).addEventListener(<span class="code-string">'submit'</span>, <span class="code-keyword">function</span>(e) {<br>
+                                &nbsp;&nbsp;e.preventDefault();<br>
+                                &nbsp;&nbsp;<span class="code-keyword">const</span> nome = document.getElementById(<span class="code-string">'nome'</span>).value;<br>
+                                &nbsp;&nbsp;<span class="code-keyword">const</span> email = document.getElementById(<span class="code-string">'email'</span>).value;<br>
+                                &nbsp;&nbsp;<span class="code-keyword">const</span> tipo = document.getElementById(<span class="code-string">'tipo-ingresso'</span>).value;<br><br>
+                                &nbsp;&nbsp;<span class="code-comment">// Simular envio para o servidor</span><br>
+                                &nbsp;&nbsp;console.log(<span class="code-string">`Inscrição recebida: <span class="code-keyword">${</span>nome<span class="code-keyword">}</span>, <span class="code-keyword">${</span>email<span class="code-keyword">}</span>, <span class="code-keyword">${</span>tipo<span class="code-keyword">}</span>`</span>);<br>
+                                &nbsp;&nbsp;alert(<span class="code-string">'Inscrição realizada com sucesso! Verifique seu email para confirmação.'</span>);<br>
+                                &nbsp;&nbsp;document.getElementById(<span class="code-string">'form-evento'</span>).reset();<br>
+                                });
+                            </div>
+                            <p>Este código cria um formulário de inscrição para eventos e processa os dados do usuário, demonstrando conceitos de desenvolvimento web front-end.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-        
-        <div class="chart-container">
-            <h2>Gráfico de Linhas</h2>
-            <canvas id="linhaChart"></canvas>
-        </div>
-    </div>
-    
-    <div class="info">
-        <p>Total de amostras: 30 | A: 12 (40%) | B: 5 (16.7%) | AB: 3 (10%) | O: 10 (33.3%)</p>
     </div>
 
     <script>
-        // Dados fornecidos
-        const tipos = ['A', 'B', 'AB', 'O'];
-        const valores = [12, 5, 3, 10];
-        const total = 30;
-        const porcentagens = valores.map(valor => ((valor / total) * 100).toFixed(1) + '%');
-        
-        // Cores para os gráficos
-        const cores = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'];
-        
-        // Gráfico de Pizza
-        new Chart(document.getElementById('pizzaChart'), {
-            type: 'pie',
-            data: {
-                labels: tipos.map((tipo, i) => `${tipo}: ${porcentagens[i]}`),
-                datasets: [{
-                    data: valores,
-                    backgroundColor: cores,
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.label}: ${context.raw} (${((context.raw / total) * 100).toFixed(1)}%)`;
-                            }
+        // Navegação entre seções
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-tab');
+            const sections = document.querySelectorAll('.section');
+            
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // Atualizar botões de navegação
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar seção alvo e esconder outras
+                    sections.forEach(section => {
+                        if (section.id === target) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
                         }
-                    }
-                }
-            }
-        });
-        
-        // Gráfico de Colunas
-        new Chart(document.getElementById('colunaChart'), {
-            type: 'bar',
-            data: {
-                labels: tipos,
-                datasets: [{
-                    label: 'Quantidade',
-                    data: valores,
-                    backgroundColor: cores,
-                    borderColor: cores.map(cor => cor.replace('0.8', '1')),
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Quantidade'
-                        }
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Tipo Sanguíneo'
-                        }
-                    }
-                }
-            }
-        });
-        
-        // Gráfico de Linhas
-        new Chart(document.getElementById('linhaChart'), {
-            type: 'line',
-            data: {
-                labels: tipos,
-                datasets: [{
-                    label: 'Quantidade por Tipo',
-                    data: valores,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 2,
-                    pointBackgroundColor: cores,
-                    pointRadius: 6,
-                    pointHoverRadius: 8,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Quantidade'
-                        }
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Tipo Sanguíneo'
-                        }
-                    }
-                }
+                    });
+                });
+            });
+            
+            // Criar partículas de fundo
+            const particlesContainer = document.getElementById('particles');
+            const numberOfParticles = 50;
+            
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Posição e animação aleatórias
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                
+                particle.style.left = `${posX}vw`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
             }
         });
     </script>
